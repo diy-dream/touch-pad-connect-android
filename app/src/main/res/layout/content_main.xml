@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".ui.MainActivity"
+    tools:showIn="@layout/activity_main">
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tab_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/ThreeD_tab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="3D" />
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/data_tab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="DATA" />
+
+    </com.google.android.material.tabs.TabLayout>
+
+    <fragment
+        android:id="@+id/nav_controller"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="409dp"
+        android:layout_height="625dp"
+        android:layout_marginTop="1dp"
+        app:defaultNavHost="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tab_layout"
+        app:navGraph="@navigation/my_navigation" />
+</androidx.constraintlayout.widget.ConstraintLayout>

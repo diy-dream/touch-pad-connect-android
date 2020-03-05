@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragment_data_tab"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.DataTab">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="monospace"
+            android:text="ICM20948"
+            android:textAlignment="center"
+            android:textColor="@android:color/holo_orange_light"
+            android:textSize="36sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView_psi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PSI = null" />
+
+        <TextView
+            android:id="@+id/textView_theta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="THETA = null" />
+
+        <TextView
+            android:id="@+id/textView_phi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PHI = null" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="monospace"
+            android:text="MTCH6102"
+            android:textAlignment="center"
+            android:textColor="@android:color/holo_orange_light"
+            android:textSize="36sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textViewGestureState"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Gesture = Nothing"
+            android:textAlignment="center" />
+
+        <ImageView
+            android:id="@+id/imageViewGestureState"
+            android:layout_width="234dp"
+            android:layout_height="250dp"
+            android:src="@drawable/no_click_icon"
+            app:srcCompat="@drawable/no_click_icon" />
+    </LinearLayout>
+
+</FrameLayout>

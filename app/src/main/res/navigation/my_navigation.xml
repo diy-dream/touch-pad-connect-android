@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/my_navigation"
+    app:startDestination="@id/fragment_three_dtab">
+    <fragment
+        android:id="@+id/fragment_three_dtab"
+        android:name="com.tpc.alanl.icm20948.ui.ThreeDTab"
+        android:label="fragment_three_dtab"
+        tools:layout="@layout/fragment_three_dtab" >
+        <action
+            android:id="@+id/action_threeDTab_to_dataTab"
+            app:destination="@id/fragment_data_tab" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragment_data_tab"
+        android:name="com.tpc.alanl.icm20948.ui.DataTab"
+        android:label="fragment_data_tab"
+        tools:layout="@layout/fragment_data_tab" />
+</navigation>
