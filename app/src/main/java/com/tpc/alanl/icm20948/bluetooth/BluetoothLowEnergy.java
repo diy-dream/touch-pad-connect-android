@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import com.tpc.alanl.icm20948.R;
 import com.tpc.alanl.icm20948.device.ConstantICM20948;
 import com.tpc.alanl.icm20948.device.ICM20948;
 
@@ -36,6 +37,16 @@ public class BluetoothLowEnergy {
     public BluetoothGattCharacteristic bluetoothGattCharacteristic;
     private Context context;
     private ScanCallback scanCallback;
+
+    public BluetoothStateListener getBluetoothListener() {
+        return bluetoothListener;
+    }
+
+    public void setBluetoothListener(BluetoothStateListener bluetoothListener) {
+        this.bluetoothListener = bluetoothListener;
+    }
+
+    private BluetoothStateListener bluetoothListener;
 
     public List<BluetoothDevice> lBluetoothDevice = new ArrayList<BluetoothDevice>();
 
@@ -82,6 +93,7 @@ public class BluetoothLowEnergy {
             if(newState == BluetoothProfile.STATE_CONNECTED){
                 //ICM20948.getInstance().getListenerBluetoothState().onBluetoothStateChange(BluetoothProfile.STATE_CONNECTED);
                 Log.d("BluetoothLowEnergy", "BluetoothProfile.STATE_CONNECTED");
+                //bluetoothListener.onBluetoothStateChange(BluetoothProfile.STATE_CONNECTED);
                 bluetoothLeScanner.stopScan(scanCallback);
                 bluetoothGatt.discoverServices();
                 ((Activity) context).runOnUiThread(new Runnable() {
@@ -91,6 +103,7 @@ public class BluetoothLowEnergy {
                     }
                 });
             }else if(newState == BluetoothProfile.STATE_CONNECTING){
+                bluetoothListener.onBluetoothStateChange(BluetoothProfile.STATE_CONNECTING);
                 ((Activity) context).runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
@@ -98,6 +111,7 @@ public class BluetoothLowEnergy {
                     }
                 });
             }else if(newState == BluetoothProfile.STATE_DISCONNECTED){
+                bluetoothListener.onBluetoothStateChange(BluetoothProfile.STATE_DISCONNECTED);
                 Log.d("BluetoothLowEnergy", "BluetoothProfile.STATE_DISCONNECTED");
                 //ICM20948.getInstance().getListenerBluetoothState().onBluetoothStateChange(BluetoothProfile.STATE_DISCONNECTED);
                 ((Activity) context).runOnUiThread(new Runnable() {
@@ -107,6 +121,7 @@ public class BluetoothLowEnergy {
                     }
                 });
             }else if(newState == BluetoothProfile.STATE_DISCONNECTING){
+                bluetoothListener.onBluetoothStateChange(BluetoothProfile.STATE_DISCONNECTING);
                 ((Activity) context).runOnUiThread(new Runnable() {
                     @Override
                     public void run() {

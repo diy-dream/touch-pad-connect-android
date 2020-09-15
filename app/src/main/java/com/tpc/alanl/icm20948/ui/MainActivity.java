@@ -17,6 +17,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -36,6 +37,8 @@ public class MainActivity extends AppCompatActivity implements BluetoothStateLis
         setSupportActionBar(toolbar);
 
         toolbar.setSubtitle("Device not connected");
+
+        //ICM20948.getInstance().setListenerBluetoothState(this);
 
         context = this;
 
@@ -116,17 +119,34 @@ public class MainActivity extends AppCompatActivity implements BluetoothStateLis
     @Override
     public void onBluetoothStateChange(int bluetoothState) {
         if(bluetoothState == BluetoothProfile.STATE_CONNECTED){
-            toolbar.setSubtitle("Connected");
-            toolbar.getMenu().getItem(1).setIcon(R.drawable.baseline_bluetooth_connected_24);
+            try{
+                toolbar.setSubtitle("Connected");
+                //toolbar.getMenu().getItem(1).setIcon(R.drawable.baseline_bluetooth_connected_24);
+            }
+            catch (Exception e){
+                Log.d("onBluetoothStateChange", e.toString());
+            }
         }else if(bluetoothState == BluetoothProfile.STATE_CONNECTING){
-            toolbar.setSubtitle("Connecting ...");
-            toolbar.getMenu().getItem(1).setIcon(R.drawable.baseline_bluetooth_searching_24);
+            try {
+                toolbar.setSubtitle("Connecting ...");
+                //toolbar.getMenu().getItem(1).setIcon(R.drawable.baseline_bluetooth_searching_24);
+            }catch(Exception e){
+
+            }
         }else if(bluetoothState == BluetoothProfile.STATE_DISCONNECTED){
-            toolbar.setSubtitle("Disconnected");
-            toolbar.getMenu().getItem(1).setIcon(R.drawable.baseline_bluetooth_disabled_24);
+            try{
+                toolbar.setSubtitle("Disconnected");
+                //toolbar.getMenu().getItem(1).setIcon(R.drawable.baseline_bluetooth_disabled_24);
+            }catch(Exception e){
+
+            }
         }else if(bluetoothState == BluetoothProfile.STATE_DISCONNECTING){
-            toolbar.setSubtitle("Disconnecting ...");
-            toolbar.getMenu().getItem(1).setIcon(R.drawable.baseline_bluetooth_disabled_24);
+            try{
+                toolbar.setSubtitle("Disconnecting ...");
+                //toolbar.getMenu().getItem(1).setIcon(R.drawable.baseline_bluetooth_disabled_24);
+            }catch(Exception e){
+
+            }
         }
     }
 }
